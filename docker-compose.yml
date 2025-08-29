@@ -3,11 +3,22 @@ services:
     image: slackr31337/wyoming-piper-gpu:latest  
     container_name: wyoming-piper
     environment:  
-      - PIPER_VOICE="en_US-lessac-medium"
+      - PIPER_VOICE=${PIPER_VOICE:-en_US-amy-medium}
+      - PIPER_LENGTH=${PIPER_LENGTH:-1.0}
+      - PIPER_NOISE=${PIPER_NOISE:-0.667}
+      - PIPER_NOISEW=${PIPER_NOISEW:-0.333}
+      - PIPER_SPEAKER=${PIPER_SPEAKER:-0}
+      - PIPER_SILENCE=${PIPER_SILENCE:-1.2}
+      - PIPER_URI=${PIPER_URI:-tcp://0.0.0.0:10200}
+      - PIPER_PROCS=${PIPER_PROCS:-1}
+      - DATA_DIR=${DATA_DIR:-/data}
+      - DOWNLOAD_DIR=${DOWNLOAD_DIR:-/data}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - STREAMING=${STREAMING:-true}
     ports:
-      - 10200:10200
+      - "10200:10200"
     volumes:  
-      - /path/to/persistent/data:/data  
+      - ./data:/data  
     restart: unless-stopped
     runtime: nvidia
     deploy:

@@ -1,0 +1,10 @@
+# Wyoming Piper GPU Voice Testing Requirements
+# Install with: pip install -r requirements-test.txt
+
+# Wyoming protocol library for TTS communication
+wyoming>=1.5.0
+
+# Optional: Audio processing utilities (uncomment if needed)
+# pydub>=0.25.1
+# soundfile>=0.12.1
+# numpy>=1.21.0
